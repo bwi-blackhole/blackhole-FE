@@ -1,4 +1,4 @@
 [build]
 base = "blackhole"
-publish = ""
+publish = "blackhole/build"
 command = "yarn build"
