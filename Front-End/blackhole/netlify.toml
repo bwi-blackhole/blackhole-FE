@@ -1,0 +1,4 @@
+[build]
+base = "blackhole"
+publish = ""
+command = "yarn build"

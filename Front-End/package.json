@@ -1,0 +1,8 @@
+{
+  "name": "Front-End",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/bwi-blackhole/Front-End.git",
+  "author": "<reyaad510@gmail.com>",
+  "license": "MIT"
+}
