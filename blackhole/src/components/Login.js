@@ -6,23 +6,33 @@ import { login } from "../actions";
 class Login extends React.Component {
   state = {
     logcreds: {
-      logname: "",
-      logpassword: ""
-    }
+
+    },
+    username: "",
+    password: ""
   };
+
+  // login = e => {
+  //   e.preventDefault();
+  //   this.props.login(this.state.logcreds)
+  //   //.then(() => this.props.history.push('/main-page'))
+  //   // this.props.history.push("/main-page");
+  // };
 
   login = e => {
     e.preventDefault();
-    // this.props.login(this.state.logcreds)
-    // .then(() => this.props.history.push('/main-page'))
-    this.props.history.push("/main-page");
+    this.props.login(this.state.logcreds)
+    if (localStorage.getItem('token')) {
+      this.props.history.push("/main-page");
+    }
   };
 
   handleInput = e => {
-    e.persist();
-    this.setState(prevState => ({
-      logcreds: { ...prevState.logcreds, [e.target.name]: e.target.value }
-    }));
+    this.setState({
+      logcreds: {
+          ...this.state.logcreds, [e.target.name] : e.target.value
+      }
+   });
   };
 
   render() {
@@ -32,15 +42,15 @@ class Login extends React.Component {
         <form onSubmit={this.login}>
           <input
             onChange={this.handleInput}
-            value={this.state.logcreds.logname}
-            name="logname"
+            // value={this.state.logcreds.username}
+            name="username"
             type="text"
             placeholder="Username"
           />
           <input
             onChange={this.handleInput}
-            value={this.state.logcreds.logpassword}
-            name="logpassword"
+            // value={this.state.logcreds.password}
+            name="password"
             type="password"
             placeholder="Password"
           />
