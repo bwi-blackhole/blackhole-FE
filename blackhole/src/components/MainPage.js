@@ -5,11 +5,12 @@ import { getData } from '../actions';
 // import { PlusCircle } from "react-feather";
 
 class MainPage extends React.Component {
-  // Used to get data for axios
-  // componentDidMount() {
-  //   this.props.getData();
-  // }
 
+
+  componentDidMount() {
+    this.props.getData();
+  }
+ 
   toNotes = (e, note) => {
     e.preventDefault();
     console.log(`${note.id}`);
@@ -17,34 +18,30 @@ class MainPage extends React.Component {
     // props.getNoteById(note.id);
   };
 
-// Used to delete note with axios
-//   deleteNote = id => {
-//     this.props.deleteNotes(id);
-//   };
 
   toForm = e => {
     e.preventDefault();
     this.props.history.push("/main-page/note-form");
   };
 
-  componentDidMount() {
-    this.props.getData();
-  }
+ 
 
   render() {
     return (
       <div className="main">
         <h1> Satellite Storage </h1>
         <button onClick={this.toForm}> Create Note</button>
-        {this.props.notes.length === 0 ? (
+        {/* {this.props.notes.length === 0 ? (
           <h1> Nothing Stored In Satellite!!</h1>
-        ) : (
+        ) : ( */}
+
+          {this.props.fetchingNotes ? (<h1>Loading...</h1>) : (
           <div className="notes">
             {this.props.notes.map(note => {
               return (
                 <div
                   onClick={e => this.toNotes(e, note)}
-                  key={note.creator_id}
+                  key={note.id}
                   className="note"
                 >
                   {note.message}

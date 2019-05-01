@@ -12,47 +12,9 @@ import {
   
   const initialState = {
     notes:[],
-    // notes: [
-    //   {
-    //     creator_id: 1,
-    //     title: "mock title",
-    //     body: "mock post1",
-    //     created_at: "timestamp value",
-    //     delete_at: "day and time of automatic deletion"
-    //   },
-    //   {
-    //     creator_id: 2,
-    //     title: "mock title",
-    //     body: "mock post2",
-    //     created_at: "timestamp value",
-    //     delete_at: "day and time of automatic deletion"
-    //   },
-    //   {
-    //     creator_id: 2,
-    //     title: "mock title",
-    //     body: "mock post2",
-    //     created_at: "timestamp value",
-    //     delete_at: "day and time of automatic deletion"
-    //   },
-    //   {
-    //     creator_id: 2,
-    //     title: "mock title",
-    //     body: "mock post2",
-    //     created_at: "timestamp value",
-    //     delete_at: "day and time of automatic deletion"
-    //   },
-    //   {
-    //     creator_id: 2,
-    //     title: "mock title",
-    //     body: "mock post2",
-    //     created_at: "timestamp value",
-    //     delete_at: "day and time of automatic deletion"
-    //   }
-    // ],
     users: [],
     loggingIn: false,
     token: localStorage.getItem("token"),
-    // token: true,
     fetchingNotes: false,
     addingNotes: false,
     updatingNotes: false,

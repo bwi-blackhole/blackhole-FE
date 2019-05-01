@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import moment from 'moment';
+// import moment from 'moment';
 import { addNote } from '../actions';
 
 class NoteForm extends React.Component {
@@ -10,13 +10,9 @@ class NoteForm extends React.Component {
     this.state = {
       animate: false,
       newNote: {
-        id: null,
         message: '',
-        user_id: null,
+        user_id: 2,
         delete_at: '',
-        created_at: moment().format('MMMM Do YYYY'),
-        updated_at:moment().format('MMMM Do YYYY'),
-        storage: 1
       }
     };
   }
