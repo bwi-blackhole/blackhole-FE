@@ -8,6 +8,7 @@ class NoteForm extends React.Component {
     super(props);
 
     this.state = {
+      animate: false,
       newNote: {
         id: null,
         message: '',
@@ -26,6 +27,17 @@ class NoteForm extends React.Component {
       newNote: { ...prevState.newNote, [e.target.name]: e.target.value }
     }));
   };
+
+  handleAnimate = e => {
+    e.preventDefault();
+    this.setState(prevState => ({
+      animate: !prevState.animate
+    }));
+
+   setTimeout(() => {this.props.history.push('/main-page')}, 3000)
+  };
+
+
 
   addNote = e => {
     e.preventDefault();
@@ -48,6 +60,7 @@ class NoteForm extends React.Component {
           type="text"
           name="message"
           onChange={this.handleInput}
+          className={this.state.animate ? 'gone' : null}
         />
           <div className="select-box">
           <h3> Days To Store In Satellite: </h3>
@@ -68,7 +81,7 @@ class NoteForm extends React.Component {
           </select>
         </div>
         <div className="storage-btn">
-          <button> Blackhole </button>
+          <button onClick={this.handleAnimate}> Blackhole </button>
           <button onClick={this.addNote}> Store In Satellite</button>
           <button onClick={this.back}>Back</button>
         </div>
