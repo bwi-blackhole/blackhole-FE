@@ -37,7 +37,7 @@ class NoteForm extends React.Component {
 
   addNote = e => {
     e.preventDefault();
-    this.props.addNote(this.state.newNote);
+    this.props.addNote(this.state.newNote)
     this.props.history.push("/main-page");
   };
 

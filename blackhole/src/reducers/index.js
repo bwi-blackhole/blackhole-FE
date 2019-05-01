@@ -7,7 +7,9 @@ import {
     ADD_START,
     ADD_SUCCESS,
     DELETE_START,
-    DELETE_SUCCESS
+    DELETE_SUCCESS,
+    EDIT_START,
+    EDIT_SUCCESS
   } from "../actions";
   
   const initialState = {
@@ -62,7 +64,7 @@ import {
           addingNotes: false,
           error:'',
           notes: action.payload.notes
-        }
+        };
 
       case DELETE_START:
         return {
@@ -77,6 +79,20 @@ import {
           errorStatusCode: null,
           notes: action.payload
         };
+
+        case EDIT_START:
+          return {
+            ...state,
+            updatingNotes: true
+          }
+
+          case EDIT_SUCCESS:
+            return {
+              ...state,
+              updatingNotes: false,
+              notes: action.payload
+            }
+
       case USER_UNAUTHORIZED:
         return {
           ...state,
