@@ -75,12 +75,12 @@ export const addNote = newNote => dispatch => {
 
 export const DELETE_START = "DELETE_START";
 export const DELETE_SUCCESS = "DELETE_SUCCESS";
-export const DELETE_FAILURE = "DELETE_AILURE";
+export const DELETE_FAILURE = "DELETE_FAILURE";
 
 export const deleteNotes = id => dispatch => {
   dispatch({ type: DELETE_START });
   axios
-    .delete(`http://localhost:3333/api/notes/${id}`, {
+    .delete(` https://blackhole-backend.herokuapp.com/delmessage/${id}`, {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(res => {
@@ -88,10 +88,5 @@ export const deleteNotes = id => dispatch => {
     })
     .catch(err => {
       console.log(err.response);
-      if (err.response.status === 403) {
-        dispatch({ type: USER_UNAUTHORIZED, payload: err.response });
-      } else {
-        dispatch({ type: DELETE_FAILURE, payload: err.response });
-      }
     });
 };

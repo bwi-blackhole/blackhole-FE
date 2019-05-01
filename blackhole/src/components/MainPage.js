@@ -15,7 +15,6 @@ class MainPage extends React.Component {
     e.preventDefault();
     console.log(`${note.id}`);
     this.props.history.push(`/notes/${note.id}`);
-    // props.getNoteById(note.id);
   };
 
 
