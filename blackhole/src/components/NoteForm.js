@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import moment from 'moment';
+import { addNote } from '../actions';
 
 class NoteForm extends React.Component {
   constructor(props) {
@@ -8,8 +9,12 @@ class NoteForm extends React.Component {
 
     this.state = {
       newNote: {
-        text: '',
+        id: null,
+        message: '',
+        user_id: null,
+        delete_at: '',
         created_at: moment().format('MMMM Do YYYY'),
+        updated_at:moment().format('MMMM Do YYYY'),
         storage: 1
       }
     };
@@ -24,6 +29,7 @@ class NoteForm extends React.Component {
 
   addNote = e => {
     e.preventDefault();
+    this.props.addNote(this.state.newNote);
     this.props.history.push("/main-page");
   };
 
@@ -38,9 +44,9 @@ class NoteForm extends React.Component {
         <h1 className="form-header">Say Goodbye To All Of Your Problems</h1>
         <textarea
           placeholder="Vent it all away..."
-          value={this.state.text}
+          value={this.state.newNote.message}
           type="text"
-          name="text"
+          name="message"
           onChange={this.handleInput}
         />
           <div className="select-box">
@@ -71,7 +77,14 @@ class NoteForm extends React.Component {
   }
 }
 
+
+const mapStateToProps = state => {
+  return {
+      notes: state.notes
+  }
+}
+
 export default connect(
-  null,
-  {}
+  mapStateToProps,
+  { addNote }
 )(NoteForm);

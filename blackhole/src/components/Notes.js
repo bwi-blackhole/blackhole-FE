@@ -3,8 +3,12 @@ import { connect } from "react-redux";
 
 const Notes = props => {
   const note = props.notes.find(
-    note => `${note.creator_id}` === props.match.params.id
+    note => `${note.id}` === props.match.params.id
   );
+
+  
+console.log()
+  
 
   const back = e => {
     e.preventDefault();
@@ -12,10 +16,13 @@ const Notes = props => {
     console.log("hi");
   };
 
+
+  
+
   return (
     <div className="single-note">
       <div className="single-text">
-        <h3> {note.body}</h3>
+        <h3> {note.message}</h3>
       </div>
       <div className="single-btn">
         <button>Edit</button>

@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-// import { getData, deleteNote } from '../actions';
+import { getData } from '../actions';
 // import { PlusCircle } from "react-feather";
 
 class MainPage extends React.Component {
@@ -12,8 +12,8 @@ class MainPage extends React.Component {
 
   toNotes = (e, note) => {
     e.preventDefault();
-    console.log(`${note.creator_id}`);
-    this.props.history.push(`/notes/${note.creator_id}`);
+    console.log(`${note.id}`);
+    this.props.history.push(`/notes/${note.id}`);
     // props.getNoteById(note.id);
   };
 
@@ -26,6 +26,10 @@ class MainPage extends React.Component {
     e.preventDefault();
     this.props.history.push("/main-page/note-form");
   };
+
+  componentDidMount() {
+    this.props.getData();
+  }
 
   render() {
     return (
@@ -43,7 +47,7 @@ class MainPage extends React.Component {
                   key={note.creator_id}
                   className="note"
                 >
-                  {note.body}
+                  {note.message}
                 </div>
               );
             })}
@@ -63,7 +67,7 @@ const mapStateToProps = state => ({
 export default withRouter(
   connect(
     mapStateToProps,
-    // { getData, deleteNote }
+    { getData }
   )(MainPage)
 );
 
