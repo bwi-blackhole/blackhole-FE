@@ -8,7 +8,10 @@ class MainPage extends React.Component {
 
 
   componentDidMount() {
-    this.props.getData();
+      if (localStorage.getItem("user_id")) {
+        let user_id = parseInt(localStorage.getItem("user_id"))
+        this.props.getData(user_id);
+      }
   }
  
   toNotes = (e, note) => {

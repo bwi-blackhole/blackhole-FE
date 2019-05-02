@@ -21,6 +21,7 @@ import {
     notes:[],
     users: [],
     loggingIn: false,
+    registering: false,
     token: localStorage.getItem("token"),
     fetchingNotes: false,
     gettingUsers: false,

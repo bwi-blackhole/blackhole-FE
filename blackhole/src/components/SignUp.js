@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { getUsers, register } from '../actions';
 
 
-
  class SignUp extends React.Component {
   state = {
     regcreds: {
