@@ -1,35 +1,80 @@
 import React from "react";
 import { connect } from "react-redux";
+import { deleteNotes, updateNotes } from '../actions';
+import EditForm from './EditForm';
 
-const Notes = props => {
-  const note = props.notes.find(
-    note => `${note.creator_id}` === props.match.params.id
-  );
+class Notes extends React.Component{
 
-  const back = e => {
+  state = {
+    animate: false,
+    updatingNoteId: null
+  }
+  
+
+   back = e => {
     e.preventDefault();
-    props.history.push("/main-page");
-    console.log("hi");
+    this.props.history.push("/main-page");
   };
 
-  return (
-    <div className="single-note">
-      <div className="single-text">
-        <h3> {note.body}</h3>
-      </div>
-      <div className="single-btn">
-        <button>Edit</button>
-        <button onClick={back}>Back</button>
-      </div>
+
+  updateNote = (e, note) => {
+    e.preventDefault();
+    this.props.updateNotes(note);
+    this.setState({
+      updatingNoteId: null
+    });
+    this.props.history.push('/main-page');
+  };
+  
+
+
+
+
+
+  handleAnimate = (id) => {
+    this.setState(prevState => ({
+      animate: !prevState.animate
+    }));
+   setTimeout(() => {this.props.deleteNotes(id);}, 3000)
+   setTimeout(() => {this.props.history.push('/main-page')}, 3000)
+  };
+  
+
+
+
+
+ render() {
+     const note = this.props.notes.find(
+    note => `${note.id}` === this.props.match.params.id);
+    if(this.state.updatingNoteId === note.id) {
+      return <EditForm note={note} updateNote={this.updateNote} updatingNotes={this.props.updatingNotes} handleAnimate={this.handleAnimate} />
+    } 
+   return (
+    <div className={this.state.animate ? 'gone' : 'single-note'}>
+    <div className="single-text">
+      <h3> {note.message}</h3>
+      <h6>{note.created_at}</h6>
     </div>
-  );
-};
+    <div className="single-btn">
+      <button onClick={() => this.setState({ updatingNoteId: note.id })}>Edit</button>
+      <button onClick={() => this.handleAnimate(note.id)}>Blackhole</button>
+      <button onClick={this.back}>Back</button>
+    </div>
+  </div>
+   )
+ }
+
+}
+
+  
 
 const mapStateToProps = state => ({
-  notes: state.notes
+  notes: state.notes,
+  deletingNotes: state.deletingNotes,
+  updatingNotes: state.updatingNotes
 });
 
 export default connect(
   mapStateToProps,
-  {}
+  { deleteNotes, updateNotes }
 )(Notes);

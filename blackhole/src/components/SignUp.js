@@ -14,9 +14,10 @@ import { Link } from "react-router-dom";
 export default class SignUp extends React.Component {
   state = {
     regcreds: {
-      regname: "",
-      regpassword: ""
-    }
+
+    },
+    username:'',
+    password: ''
   };
 
   signUp = e => {
@@ -59,16 +60,16 @@ export default class SignUp extends React.Component {
           <form onSubmit={this.signUp}>
             <input
               onChange={this.handleInput}
-              value={this.state.regcreds.regname}
-              name="regname"
+              // value={this.state.regcreds.regname}
+              name="username"
               type="text"
               label="Name"
               placeholder="Username"
             />
             <input
               onChange={this.handleInput}
-              value={this.state.regcreds.regpassword}
-              name="regpassword"
+              // value={this.state.regcreds.regpassword}
+              name="password"
               type="password"
               label="Password"
               placeholder="Password"
