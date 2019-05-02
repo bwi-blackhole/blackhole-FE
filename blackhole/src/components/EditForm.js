@@ -49,7 +49,7 @@ class EditForm extends React.Component {
               <select
                 name="storage"
                 onChange={this.handleInput}
-                // value={this.state.newNote.storage}
+                value={this.state.newNote.storage}
               >
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -64,7 +64,7 @@ class EditForm extends React.Component {
             </div>
             <div className="storage-btn">
               <button onClick={this.handleAnimate}> Blackhole </button>
-              <button onClick={this.updateNote}> Edit Note </button>
+              <button onClick={this.updateNote}> Store In Satellite </button>
             </div>
           </div>
         )

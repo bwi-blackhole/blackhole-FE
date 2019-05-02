@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { register } from "../actions";
+import { connect } from 'react-redux';
+import { getUsers, register } from '../actions';
 
-export default class SignUp extends React.Component {
+
+ class SignUp extends React.Component {
   state = {
     regcreds: {
 
@@ -11,9 +13,15 @@ export default class SignUp extends React.Component {
     password: ''
   };
 
+
+
+  componentDidMount() {
+    this.props.getUsers();
+  }
+
   signUp = e => {
     e.preventDefault();
-    register(this.state.regcreds)
+    this.props.register(this.state.regcreds);
     this.props.history.push("/login");
   };
 
@@ -78,4 +86,8 @@ export default class SignUp extends React.Component {
   }
 }
 
+
+export default connect(
+  null, { getUsers, register }
+)(SignUp);
 

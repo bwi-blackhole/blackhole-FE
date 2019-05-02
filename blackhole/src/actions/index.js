@@ -14,18 +14,41 @@ export const login = creds => dispatch => {
 };
 
 
- export const REGISTER_START = 'REGISTER_START';
- export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const REG_START = 'REG_START';
+export const REG_SUCCESS= 'REG_SUCCESS';
 
-export const register = creds => dispatch => {
-  dispatch({ type: REGISTER_START });
-  axios.post("https://blackhole-backend.herokuapp.com/api/auth/register", creds)
+
+export const register = user => dispatch => {
+  dispatch({ type: REG_START });
+  axios.post("https://blackhole-backend.herokuapp.com/api/auth/register", user)
   .then(res => {
-    console.log(res.data)
-    this.props.history.push("/login");
-    dispatch({ type: REGISTER_SUCCESS, payload: res.data.token });
-  });
+    dispatch({ type: REG_SUCCESS})
+    dispatch(getUsers());
+  }).catch(err => console.log(err));
 };
+
+
+
+export const GET_USERS_START = "GET_USERS_START";
+export const GET_USERS_SUCCESS = "GET_USERS_SUCCESS";
+export const GET_USERS_FAILURE = "GET_USERS_FAILURE";
+ 
+
+export const getUsers = () => dispatch => {
+  dispatch({ type: GET_USERS_START });
+  axios
+    .get("https://blackhole-backend.herokuapp.com/users", {
+      headers: { Authorization: localStorage.getItem("token") }
+    })
+    .then(res => {
+      dispatch({ type: GET_USERS_SUCCESS, payload: res.data });
+    })
+    .catch(err => console.log(err));
+};
+
+
+
+
 
 
 // Used to fetch data from server
@@ -91,6 +114,8 @@ export const deleteNotes = id => dispatch => {
     });
 };
 
+
+// Edit notes 
 
 export const EDIT_START = 'EDIT_START';
 export const EDIT_SUCCESS='EDIT_SUCCESS';
