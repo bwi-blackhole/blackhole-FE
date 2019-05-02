@@ -2,6 +2,8 @@ import {
     USER_UNAUTHORIZED,
     LOGIN_START,
     LOGIN_SUCCESS,
+    REGISTER_SUCCESS,
+    REGISTER_START,
     FETCH_DATA_START,
     FETCH_DATA_SUCCESS,
     ADD_START,
@@ -16,6 +18,7 @@ import {
     notes:[],
     users: [],
     loggingIn: false,
+    registering: false,
     token: localStorage.getItem("token"),
     fetchingNotes: false,
     addingNotes: false,
@@ -37,6 +40,16 @@ import {
           ...state,
           loggingIn: false,
           token: action.payload
+        };
+      case REGISTER_START:
+        return {
+          ...state,
+          registering: true
+        };
+      case REGISTER_SUCCESS:
+        return {
+          ...state,
+          registering: false
         };
       case FETCH_DATA_START:
         return {

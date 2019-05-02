@@ -14,15 +14,15 @@ export const login = creds => dispatch => {
 };
 
 
-
+ export const REGISTER_START = 'REGISTER_START';
  export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 
 export const register = creds => dispatch => {
-  dispatch({ type: LOGIN_START });
+  dispatch({ type: REGISTER_START });
   axios.post("https://blackhole-backend.herokuapp.com/api/auth/register", creds)
   .then(res => {
     console.log(res.data)
-    localStorage.setItem("token", res.data.token)
+    this.props.history.push("/login");
     dispatch({ type: REGISTER_SUCCESS, payload: res.data.token });
   });
 };

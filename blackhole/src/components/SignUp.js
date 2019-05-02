@@ -1,15 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import TextField from "@material-ui/core/TextField";
-// import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-// import purple from "@material-ui/core/colors/purple";
-
-// const theme = createMuiTheme({
-//   palette: {
-//     primary: purple
-//   },
-//   typography: { useNextVariants: true }
-// });
+import { register } from "../actions";
 
 export default class SignUp extends React.Component {
   state = {
@@ -22,6 +13,7 @@ export default class SignUp extends React.Component {
 
   signUp = e => {
     e.preventDefault();
+    register(this.state.regcreds)
     this.props.history.push("/login");
   };
 
