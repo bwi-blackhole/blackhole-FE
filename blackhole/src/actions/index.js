@@ -9,6 +9,7 @@ export const login = creds => dispatch => {
   .then(res => {
     console.log(res.data)
     localStorage.setItem("token", res.data.token)
+    localStorage.setItem("user_id", res.data.user.id )
     dispatch({ type: LOGIN_SUCCESS, payload: res.data.token });
   });
 };
@@ -58,10 +59,10 @@ export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
 export const FETCH_DATA_FAILURE = "FETCH_DATA_FAILURE";
 export const USER_UNAUTHORIZED = "FETCH_DATA_FAILURE";
 
-export const getData = () => dispatch => {
+export const getData = (user_id) => dispatch => {
   dispatch({ type: FETCH_DATA_START });
   axios
-    .get("https://blackhole-backend.herokuapp.com/getmessages", {
+    .get(`https://blackhole-backend.herokuapp.com/messages/users/${user_id}`, {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(res => {

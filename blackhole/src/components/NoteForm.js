@@ -11,8 +11,8 @@ class NoteForm extends React.Component {
       animate: false,
       newNote: {
         message: '',
-        user_id: 2,
         delete_at: '',
+        user_id: parseInt(localStorage.getItem("user_id"))
       }
     };
   }

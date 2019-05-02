@@ -22,9 +22,7 @@ class Login extends React.Component {
   login = e => {
     e.preventDefault();
     this.props.login(this.state.logcreds)
-    if (localStorage.getItem('token')) {
-      this.props.history.push("/main-page");
-    }
+    this.props.history.push("/main-page");
   };
 
   handleInput = e => {
