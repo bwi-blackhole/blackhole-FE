@@ -49,18 +49,21 @@ class Notes extends React.Component{
     if(this.state.updatingNoteId === note.id) {
       return <EditForm note={note} updateNote={this.updateNote} updatingNotes={this.props.updatingNotes} handleAnimate={this.handleAnimate} />
     } 
+
    return (
+     <div>
     <div className={this.state.animate ? 'gone' : 'single-note'}>
     <div className="single-text">
       <h3> {note.message}</h3>
       <h6>{note.created_at}</h6>
     </div>
-    <div className="single-btn">
-      <button onClick={() => this.setState({ updatingNoteId: note.id })}>Edit</button>
-      <button onClick={() => this.handleAnimate(note.id)}>Blackhole</button>
-      <button onClick={this.back}>Back</button>
-    </div>
   </div>
+     <div className="single-btn">
+     <button onClick={() => this.setState({ updatingNoteId: note.id })}>Edit</button>
+     <button onClick={() => this.handleAnimate(note.id)}>Blackhole</button>
+     <button onClick={this.back}>Back</button>
+   </div>
+   </div>
    )
  }
 

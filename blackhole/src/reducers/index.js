@@ -2,8 +2,12 @@ import {
     USER_UNAUTHORIZED,
     LOGIN_START,
     LOGIN_SUCCESS,
+    REG_START,
+    REG_SUCCESS,
     FETCH_DATA_START,
     FETCH_DATA_SUCCESS,
+    GET_USERS_START,
+    GET_USERS_SUCCESS,
     ADD_START,
     ADD_SUCCESS,
     DELETE_START,
@@ -18,6 +22,7 @@ import {
     loggingIn: false,
     token: localStorage.getItem("token"),
     fetchingNotes: false,
+    gettingUsers: false,
     addingNotes: false,
     updatingNotes: false,
     deletingNotes: false,
@@ -38,6 +43,10 @@ import {
           loggingIn: false,
           token: action.payload
         };
+        case REG_SUCCESS:
+        return {
+          ...state
+        }
       case FETCH_DATA_START:
         return {
           ...state,
@@ -51,6 +60,18 @@ import {
           fetchingNotes: false,
           notes: action.payload
         };
+
+        case GET_USERS_START:
+          return {
+            ...state,
+            gettingUsers: true
+          }
+
+          case GET_USERS_SUCCESS:
+            return {
+              ...state,
+              users: action.payload
+            }
 
         case ADD_START:
         return {
