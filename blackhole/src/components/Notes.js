@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { deleteNotes, updateNotes } from '../actions';
+import moment from 'moment';
 import EditForm from './EditForm';
 
 class Notes extends React.Component{
@@ -51,19 +52,20 @@ class Notes extends React.Component{
     } 
 
    return (
-     <div>
+  
     <div className={this.state.animate ? 'gone' : 'single-note'}>
     <div className="single-text">
       <h3> {note.message}</h3>
-      <h6>{note.created_at}</h6>
+      <h5> Time Until Destruction: {moment().add(note.delete_at, 'day').fromNow(true)} </h5>
     </div>
-  </div>
-     <div className="single-btn">
+    <div className="single-btn">
      <button onClick={() => this.setState({ updatingNoteId: note.id })}>Edit</button>
      <button onClick={() => this.handleAnimate(note.id)}>Blackhole</button>
      <button onClick={this.back}>Back</button>
    </div>
-   </div>
+  </div>
+  
+   
    )
  }
 

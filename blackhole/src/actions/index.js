@@ -20,7 +20,7 @@ export const REG_SUCCESS= 'REG_SUCCESS';
 
 export const register = user => dispatch => {
   dispatch({ type: REG_START });
-  axios.post("https://blackhole-backend.herokuapp.com/api/register", user)
+  axios.post("https://blackhole-backend.herokuapp.com/api/auth/register", user)
   .then(res => {
     dispatch({ type: REG_SUCCESS})
     dispatch(getUsers());
