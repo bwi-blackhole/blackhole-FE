@@ -47,9 +47,9 @@ class EditForm extends React.Component {
               <div className="select-box">
               <h3> Days To Store In Satellite: </h3>
               <select
-                name="storage"
+                name="delete_at"
                 onChange={this.handleInput}
-                value={this.state.newNote.storage}
+                value={this.state.newNote.delete_at}
               >
                 <option value="1">1</option>
                 <option value="2">2</option>

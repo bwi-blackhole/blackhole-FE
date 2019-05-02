@@ -1,5 +1,5 @@
 .App {
-  font-family: sans-serif;
+  
   text-align: center;
 }
 
@@ -10,6 +10,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-color: black;
+  font-family: sans-serif;
 }
 
 h1,
@@ -288,6 +289,11 @@ select:hover {
   width: 70%;
   padding: 30px;
   background: rgba(42, 42, 42, 0.5);
+}
+
+
+h5 {
+  margin-top: 50px;
 }
 
 .single-btn {
