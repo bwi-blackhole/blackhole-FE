@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { getData } from '../actions';
+import { getData, logout } from '../actions';
 // import { PlusCircle } from "react-feather";
 
 class MainPage extends React.Component {
@@ -17,6 +17,12 @@ class MainPage extends React.Component {
     this.props.history.push(`/notes/${note.id}`);
   };
 
+ 
+  logoutButton = e => {
+    e.preventDefault();
+    this.props.logout();
+    this.props.history.push('/');
+  }
 
   toForm = e => {
     e.preventDefault();
@@ -29,7 +35,8 @@ class MainPage extends React.Component {
     return (
       <div className="main">
         <h1> Satellite Storage </h1>
-        <button onClick={this.toForm}> Create Note</button>
+        <button onClick={this.toForm}> Create Note</button> {' '}
+        <button onClick={this.logoutButton}>Logout</button>
         {/* {this.props.notes.length === 0 ? (
           <h1> Nothing Stored In Satellite!!</h1>
         ) : ( */}
@@ -64,7 +71,7 @@ const mapStateToProps = state => ({
 export default withRouter(
   connect(
     mapStateToProps,
-    { getData }
+    { getData, logout }
   )(MainPage)
 );
 

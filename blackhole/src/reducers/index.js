@@ -2,6 +2,7 @@ import {
     USER_UNAUTHORIZED,
     LOGIN_START,
     LOGIN_SUCCESS,
+    LOGOUT,
     REG_START,
     REG_SUCCESS,
     FETCH_DATA_START,
@@ -43,6 +44,12 @@ import {
           loggingIn: false,
           token: action.payload
         };
+        case LOGOUT:
+         return {
+           user:[],
+           notes: [],
+           token: null,  
+         }
         case REG_SUCCESS:
         return {
           ...state
