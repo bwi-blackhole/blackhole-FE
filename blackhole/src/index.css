@@ -330,7 +330,7 @@ select:hover {
   margin: 0 auto;
   border: 1px solid #e64944;
   /* margin-top: 250px; */
-  height: 200px;
+  min-height: 200px;
   width: 70%;
   padding: 30px;
   background: rgba(42, 42, 42, 0.5);
@@ -440,7 +440,8 @@ h5 {
   }
 
   .single-note {
-    height: 300px;
+    min-height: 300px;
+    font-size: 14px;
   }
 
   .single-note button {
