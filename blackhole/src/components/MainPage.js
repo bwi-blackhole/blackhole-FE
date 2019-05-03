@@ -46,7 +46,7 @@ class MainPage extends React.Component {
           <h1> Nothing Stored In Satellite!!</h1>
         ) : ( */}
 
-          {!this.props.notes ? (<h1>Loading...</h1>) : (
+          {this.props.fetchingNotes? (<h1>Loading...</h1>) : (
           <div className="notes">
             {this.props.notes.map(note => {
               return (
