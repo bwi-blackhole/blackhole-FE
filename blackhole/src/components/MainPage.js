@@ -24,7 +24,7 @@ class MainPage extends React.Component {
   logoutButton = e => {
     e.preventDefault();
     this.props.logout();
-    this.props.history.push('/');
+    this.props.history.push('/login');
   }
 
   toForm = e => {
@@ -38,13 +38,15 @@ class MainPage extends React.Component {
     return (
       <div className="main">
         <h1> Satellite Storage </h1>
+        <div className='button-wrapper'>
         <button onClick={this.toForm}> Create Note</button> {' '}
         <button onClick={this.logoutButton}>Logout</button>
+        </div>
         {/* {this.props.notes.length === 0 ? (
           <h1> Nothing Stored In Satellite!!</h1>
         ) : ( */}
 
-          {this.props.fetchingNotes ? (<h1>Loading...</h1>) : (
+          {!this.props.notes ? (<h1>Loading...</h1>) : (
           <div className="notes">
             {this.props.notes.map(note => {
               return (

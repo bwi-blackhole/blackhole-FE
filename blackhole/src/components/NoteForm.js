@@ -45,7 +45,7 @@ class NoteForm extends React.Component {
     e.preventDefault();
     this.props.history.push("/main-page");
   };
-
+1
   render() {
     return (
       <div className="note-form">

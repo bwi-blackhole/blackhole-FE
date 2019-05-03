@@ -7,13 +7,16 @@ import Login from './components/Login'
 import MainPage from "./components/MainPage";
 import Notes from "./components/Notes";
 import NoteForm from "./components/NoteForm";
+import { connect } from 'react-redux';
 
-export default class App extends React.Component {
+ class App extends React.Component {
   render() {
     return (
       <Router>
         <nav>
           <div className="nav-links">
+          <a className="home-link" href="">blackh0le</a>
+          <div className={this.props.loggedIn ? 'none': 'displayed'}>
             <NavLink exact to="/">
               SignUp
             </NavLink>
@@ -22,6 +25,7 @@ export default class App extends React.Component {
               Main Page
             </NavLink> */}
             {/* <NavLink to="/main-page/note-form">Note Form</NavLink> */}
+          </div>
           </div>
         </nav>
         <div>
@@ -35,3 +39,15 @@ export default class App extends React.Component {
     );
   }
 }
+
+
+const mapStateToProps = state => ({
+  loggedIn: state.loggedIn
+ 
+});
+
+export default
+  connect(
+    mapStateToProps,
+    {}
+  )(App);

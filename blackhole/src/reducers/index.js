@@ -20,6 +20,7 @@ import {
   const initialState = {
     notes:[],
     users: [],
+    loggedIn: false,
     loggingIn: false,
     registering: false,
     token: localStorage.getItem("token"),
@@ -43,6 +44,7 @@ import {
         return {
           ...state,
           loggingIn: false,
+          loggedIn: true,
           token: action.payload
         };
         case LOGOUT:
@@ -50,6 +52,7 @@ import {
            user:[],
            notes: [],
            token: null,  
+           loggedIn: false
          }
         case REG_SUCCESS:
         return {
@@ -92,7 +95,7 @@ import {
           ...state,
           addingNotes: false,
           error:'',
-          notes: action.payload.notes
+          notes: [...action.payload.notes]
         };
 
       case DELETE_START:
@@ -106,7 +109,7 @@ import {
           deletingNotes: false,
           error: "",
           errorStatusCode: null,
-          notes: action.payload
+          notes: [...action.payload]
         };
 
         case EDIT_START:
@@ -119,7 +122,7 @@ import {
             return {
               ...state,
               updatingNotes: false,
-              notes: action.payload
+              notes: [...action.payload]
             }
 
       case USER_UNAUTHORIZED:
