@@ -20,6 +20,7 @@ import {
   const initialState = {
     notes:[],
     users: [],
+    loggedIn: false,
     loggingIn: false,
     registering: false,
     token: localStorage.getItem("token"),
@@ -43,6 +44,7 @@ import {
         return {
           ...state,
           loggingIn: false,
+          loggedIn: true,
           token: action.payload
         };
         case LOGOUT:
@@ -50,6 +52,7 @@ import {
            user:[],
            notes: [],
            token: null,  
+           loggedIn: false
          }
         case REG_SUCCESS:
         return {

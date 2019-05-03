@@ -24,7 +24,7 @@ class MainPage extends React.Component {
   logoutButton = e => {
     e.preventDefault();
     this.props.logout();
-    this.props.history.push('/');
+    this.props.history.push('/login');
   }
 
   toForm = e => {

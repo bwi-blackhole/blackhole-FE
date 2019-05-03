@@ -25,6 +25,14 @@ p {
 
 /* Nav Bar Styling */
 
+.none {
+  display: none;
+}
+
+.displayed {
+  padding-left: 20px;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
