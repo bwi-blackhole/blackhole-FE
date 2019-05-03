@@ -38,8 +38,10 @@ class MainPage extends React.Component {
     return (
       <div className="main">
         <h1> Satellite Storage </h1>
+        <div className='button-wrapper'>
         <button onClick={this.toForm}> Create Note</button> {' '}
         <button onClick={this.logoutButton}>Logout</button>
+        </div>
         {/* {this.props.notes.length === 0 ? (
           <h1> Nothing Stored In Satellite!!</h1>
         ) : ( */}

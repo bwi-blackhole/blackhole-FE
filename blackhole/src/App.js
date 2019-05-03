@@ -14,6 +14,7 @@ export default class App extends React.Component {
       <Router>
         <nav>
           <div className="nav-links">
+          <a className="home-link" href="">blackh0le</a>
             <NavLink exact to="/">
               SignUp
             </NavLink>

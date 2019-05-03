@@ -35,14 +35,17 @@ nav {
   font-size: 20px;
 }
 
+
+
 .nav-links {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: #e64944;
+  color: #ff7450;
   font-weight: bold;
   margin-right: 8px;
 }
@@ -52,12 +55,21 @@ nav {
 }
 
 .nav-links a.active {
-  border-bottom: 1px solid #1c5d76;
+  color: #d23107;
+}
+
+.nav-links a:hover {
+  color: #d23107;
 }
 
 .link {
   text-decoration: none;
   color: white;
+}
+
+.home-link {
+  border-right: 1px solid #e64944;
+  padding-right: 10px;
 }
 
 
@@ -149,7 +161,7 @@ input::placeholder {
 button {
   box-sizing: border-box;
   font-size: 14px;
-  border: none;
+  border: 1px solid #e64944;
   border-radius: 4px;
   padding: 0 16px;
   margin-top: 16px;
@@ -157,8 +169,13 @@ button {
   min-width: 100px;
   text-align: center;
   outline: none;
-  background-color: rgb(var(--pure-material-primary-rgb, 33, 150, 243));
-  color: rgb(var(--pure-material-primary-rgb, 255, 255, 255));
+  background-color: black;
+  color: white;
+}
+
+button:hover {
+  background-color: #d23107;
+  color: black;
 }
 
 .main {
@@ -331,6 +348,14 @@ h5 {
     margin-left: 25%;
   }
 
+  .button-wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: space-evenly;
+    justify-content: center;
+    width: 100%;
+  }
+
   .sign-left {
     width: 100%;
   }
@@ -355,6 +380,20 @@ h5 {
 
   .note {
     width: 90%;
+  }
+
+  .single-btn {
+    display:flex;
+    flex-direction: column;
+  
+  }
+
+  .single-note button {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    
   }
 
   textarea {
