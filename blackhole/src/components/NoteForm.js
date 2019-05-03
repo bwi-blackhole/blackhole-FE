@@ -11,7 +11,7 @@ class NoteForm extends React.Component {
       animate: false,
       newNote: {
         message: '',
-        delete_at: '',
+        delete_at: 1,
         user_id: parseInt(localStorage.getItem("user_id"))
       }
     };
@@ -38,7 +38,7 @@ class NoteForm extends React.Component {
   addNote = e => {
     e.preventDefault();
     this.props.addNote(this.state.newNote)
-    this.props.history.push("/main-page");
+    setTimeout(() => {this.props.history.push('/main-page')}, 400)
   };
 
   back = e => {

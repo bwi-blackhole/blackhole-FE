@@ -21,10 +21,13 @@ class Notes extends React.Component{
   updateNote = (e, note) => {
     e.preventDefault();
     this.props.updateNotes(note);
-    this.setState({
+    // this.setState({
+    //   updatingNoteId: null
+    // });
+    setTimeout(() =>   this.setState({
       updatingNoteId: null
-    });
-    this.props.history.push('/main-page');
+    }), 300)
+    setTimeout(() => {this.props.history.push('/main-page')}, 400)
   };
   
 
@@ -37,7 +40,7 @@ class Notes extends React.Component{
       animate: !prevState.animate
     }));
    setTimeout(() => {this.props.deleteNotes(id);}, 3000)
-   setTimeout(() => {this.props.history.push('/main-page')}, 3000)
+   setTimeout(() => {this.props.history.push('/main-page')}, 3200)
   };
   
 
@@ -52,7 +55,7 @@ class Notes extends React.Component{
     } 
 
    return (
-  
+     <div className='note-container'>
     <div className={this.state.animate ? 'gone' : 'single-note'}>
     <div className="single-text">
       <h3> {note.message}</h3>
@@ -63,6 +66,7 @@ class Notes extends React.Component{
      <button onClick={() => this.handleAnimate(note.id)}>Blackhole</button>
      <button onClick={this.back}>Back</button>
    </div>
+  </div>
   </div>
   
    

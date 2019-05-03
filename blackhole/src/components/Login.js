@@ -22,7 +22,9 @@ class Login extends React.Component {
   login = e => {
     e.preventDefault();
     this.props.login(this.state.logcreds);
-    this.props.history.push("/main-page");
+    setTimeout(() => {this.props.history.push('/main-page')}, 1000)
+    // this.props.history.push("/main-page");
+    
   };
 
   handleInput = e => {

@@ -75,7 +75,7 @@ import { getUsers, register } from '../actions';
               placeholder="Password"
             />
 
-            <button type="submit">Submit Form</button>
+            <button type="submit">Submit</button>
             <Link className="link" to="/login">
               <p>Already Have An Account?</p>
             </Link>

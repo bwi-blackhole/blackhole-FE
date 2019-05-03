@@ -15,16 +15,17 @@ import { connect } from 'react-redux';
       <Router>
         <nav>
           <div className="nav-links">
-          <a className="home-link" href="https://blackhole-chaz-landing.netlify.com/" target='_blank'>blackh0le</a>
+          <a className="home-link" href="https://blackhole-chaz-landing.netlify.com/" target='_blank' rel="noopener noreferrer">blackh0le</a>
           <div className={this.props.loggedIn ? 'none': 'displayed'}>
             <NavLink exact to="/">
               SignUp
             </NavLink>
             <NavLink to="/login">Login</NavLink>
-            {/* <NavLink exact to="/main-page">
-              Main Page
-            </NavLink> */}
-            {/* <NavLink to="/main-page/note-form">Note Form</NavLink> */}
+          </div>
+          <div className={this.props.loggedIn ? 'displayed': 'none'}>
+            <NavLink exact to="/main-page">
+              Storage
+            </NavLink>
           </div>
           </div>
         </nav>

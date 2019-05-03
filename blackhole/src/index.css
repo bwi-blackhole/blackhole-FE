@@ -33,6 +33,10 @@ p {
   padding-left: 20px;
 }
 
+.show-small {
+  display: none;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -191,7 +195,10 @@ button:hover {
 }
 
 
+
 /* NoteForm Component Styling */
+
+
 
 .note-form {
   display: flex;
@@ -220,21 +227,25 @@ textarea {
 }
 
 .gone {
-  animation: yolo 3s;
+  animation: yolo 3.7s;
 }
 
 @keyframes yolo {
   0% {
     transform: scale(1) rotate3d(-1, -1, -1, 0deg);
+    opacity: 1;
   }
 
   50% {
     transform: scale(2) rotate3d(1, 1, 1, 3600deg);
+    opacity: 1;
   }
+
 
   100% {
     /* transform: rotate3d(1, 1, 1, 3600deg); */
     transform: scale(0);
+    opacity: 0;
   }
 }
 
@@ -301,6 +312,14 @@ select:hover {
   
 }
 
+.note-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+}
+
 .single-note {
   display: flex;
   flex-direction: column;
@@ -310,7 +329,8 @@ select:hover {
   border-radius: 10px;
   margin: 0 auto;
   border: 1px solid #e64944;
-  margin-top: 250px;
+  /* margin-top: 250px; */
+  min-height: 200px;
   width: 70%;
   padding: 30px;
   background: rgba(42, 42, 42, 0.5);
@@ -345,6 +365,25 @@ h5 {
     margin-bottom: 20px;
     height: 350px;
     margin-top: 110px;
+  }
+
+  @keyframes yolo {
+    0% {
+      transform: scale(1) rotate3d(-1, -1, -1, 0deg);
+      opacity: 1;
+    }
+  
+    50% {
+      transform: scale(1.5) rotate3d(1, 1, 1, 3600deg);
+      opacity: 1;
+    }
+  
+  
+    100% {
+      
+      transform: scale(0);
+      opacity: 0;
+    }
   }
 }
 
@@ -382,6 +421,10 @@ h5 {
     margin-top: 110px;
   }
 
+  .Sign-up p {
+    font-size: 15px;
+  }
+
   .login {
     width: 90%;
   }
@@ -394,6 +437,11 @@ h5 {
     display:flex;
     flex-direction: column;
   
+  }
+
+  .single-note {
+    min-height: 300px;
+    font-size: 14px;
   }
 
   .single-note button {
@@ -417,6 +465,25 @@ h5 {
 
   .form-header {
     font-size: 20px;
+  }
+
+  @keyframes yolo {
+    0% {
+      transform: scale(1) rotate3d(-1, -1, -1, 0deg);
+      opacity: 1;
+    }
+  
+    50% {
+      transform: scale(1.2) rotate3d(1, 1, 1, 3600deg);
+      opacity: 1;
+    }
+  
+  
+    100% {
+      /* transform: rotate3d(1, 1, 1, 3600deg); */
+      transform: scale(0);
+      opacity: 0;
+    }
   }
 }
 
