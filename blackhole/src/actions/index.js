@@ -118,7 +118,7 @@ export const deleteNotes = id => dispatch => {
       dispatch({ type: DELETE_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      console.log(err.response);
+      console.log('This is an error', err);
     });
 };
 

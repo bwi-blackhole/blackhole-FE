@@ -92,7 +92,7 @@ import {
           ...state,
           addingNotes: false,
           error:'',
-          notes: action.payload.notes
+          notes: [...action.payload.notes]
         };
 
       case DELETE_START:
@@ -106,7 +106,7 @@ import {
           deletingNotes: false,
           error: "",
           errorStatusCode: null,
-          notes: action.payload
+          notes: [...action.payload]
         };
 
         case EDIT_START:
@@ -119,7 +119,7 @@ import {
             return {
               ...state,
               updatingNotes: false,
-              notes: action.payload
+              notes: [...action.payload]
             }
 
       case USER_UNAUTHORIZED:

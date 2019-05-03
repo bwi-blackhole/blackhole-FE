@@ -21,7 +21,7 @@ class Login extends React.Component {
 
   login = e => {
     e.preventDefault();
-    this.props.login(this.state.logcreds)
+    this.props.login(this.state.logcreds);
     this.props.history.push("/main-page");
   };
 
