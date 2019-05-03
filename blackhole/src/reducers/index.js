@@ -2,57 +2,29 @@ import {
     USER_UNAUTHORIZED,
     LOGIN_START,
     LOGIN_SUCCESS,
+    LOGOUT,
+    REG_START,
+    REG_SUCCESS,
     FETCH_DATA_START,
     FETCH_DATA_SUCCESS,
-    FETCH_DATA_FAILURE,
+    GET_USERS_START,
+    GET_USERS_SUCCESS,
+    ADD_START,
+    ADD_SUCCESS,
     DELETE_START,
-    DELETE_SUCCESS
+    DELETE_SUCCESS,
+    EDIT_START,
+    EDIT_SUCCESS
   } from "../actions";
   
   const initialState = {
-    // notes:[],
-    notes: [
-      {
-        creator_id: 1,
-        title: "mock title",
-        body: "mock post1",
-        created_at: "timestamp value",
-        delete_at: "day and time of automatic deletion"
-      },
-      {
-        creator_id: 2,
-        title: "mock title",
-        body: "mock post2",
-        created_at: "timestamp value",
-        delete_at: "day and time of automatic deletion"
-      },
-      {
-        creator_id: 2,
-        title: "mock title",
-        body: "mock post2",
-        created_at: "timestamp value",
-        delete_at: "day and time of automatic deletion"
-      },
-      {
-        creator_id: 2,
-        title: "mock title",
-        body: "mock post2",
-        created_at: "timestamp value",
-        delete_at: "day and time of automatic deletion"
-      },
-      {
-        creator_id: 2,
-        title: "mock title",
-        body: "mock post2",
-        created_at: "timestamp value",
-        delete_at: "day and time of automatic deletion"
-      }
-    ],
+    notes:[],
     users: [],
     loggingIn: false,
-    // token: localStorage.getItem("token"),
-    token: true,
+    registering: false,
+    token: localStorage.getItem("token"),
     fetchingNotes: false,
+    gettingUsers: false,
     addingNotes: false,
     updatingNotes: false,
     deletingNotes: false,
@@ -73,6 +45,16 @@ import {
           loggingIn: false,
           token: action.payload
         };
+        case LOGOUT:
+         return {
+           user:[],
+           notes: [],
+           token: null,  
+         }
+        case REG_SUCCESS:
+        return {
+          ...state
+        }
       case FETCH_DATA_START:
         return {
           ...state,
@@ -86,6 +68,33 @@ import {
           fetchingNotes: false,
           notes: action.payload
         };
+
+        case GET_USERS_START:
+          return {
+            ...state,
+            gettingUsers: true
+          }
+
+          case GET_USERS_SUCCESS:
+            return {
+              ...state,
+              users: action.payload
+            }
+
+        case ADD_START:
+        return {
+          ...state,
+          addingNotes: true
+        };
+    
+        case ADD_SUCCESS:
+        return {
+          ...state,
+          addingNotes: false,
+          error:'',
+          notes: action.payload.notes
+        };
+
       case DELETE_START:
         return {
           ...state,
@@ -99,6 +108,20 @@ import {
           errorStatusCode: null,
           notes: action.payload
         };
+
+        case EDIT_START:
+          return {
+            ...state,
+            updatingNotes: true
+          }
+
+          case EDIT_SUCCESS:
+            return {
+              ...state,
+              updatingNotes: false,
+              notes: action.payload
+            }
+
       case USER_UNAUTHORIZED:
         return {
           ...state,

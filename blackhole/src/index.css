@@ -1,5 +1,5 @@
 .App {
-  font-family: sans-serif;
+  
   text-align: center;
 }
 
@@ -10,6 +10,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-color: black;
+  font-family: sans-serif;
 }
 
 h1,
@@ -193,6 +194,25 @@ textarea {
   color: white;
 }
 
+.gone {
+  animation: yolo 3s;
+}
+
+@keyframes yolo {
+  0% {
+    transform: scale(1) rotate3d(-1, -1, -1, 0deg);
+  }
+
+  50% {
+    transform: scale(2) rotate3d(1, 1, 1, 3600deg);
+  }
+
+  100% {
+    /* transform: rotate3d(1, 1, 1, 3600deg); */
+    transform: scale(0);
+  }
+}
+
 
 .select-box {
   display: flex;
@@ -269,6 +289,11 @@ select:hover {
   width: 70%;
   padding: 30px;
   background: rgba(42, 42, 42, 0.5);
+}
+
+
+h5 {
+  margin-top: 50px;
 }
 
 .single-btn {

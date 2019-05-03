@@ -1,16 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
-import moment from 'moment';
+// import moment from 'moment';
+import { addNote } from '../actions';
 
 class NoteForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      animate: false,
       newNote: {
-        text: '',
-        created_at: moment().format('MMMM Do YYYY'),
-        storage: 1
+        message: '',
+        delete_at: '',
+        user_id: parseInt(localStorage.getItem("user_id"))
       }
     };
   }
@@ -22,8 +24,20 @@ class NoteForm extends React.Component {
     }));
   };
 
+  handleAnimate = e => {
+    e.preventDefault();
+    this.setState(prevState => ({
+      animate: !prevState.animate
+    }));
+
+   setTimeout(() => {this.props.history.push('/main-page')}, 3000)
+  };
+
+
+
   addNote = e => {
     e.preventDefault();
+    this.props.addNote(this.state.newNote)
     this.props.history.push("/main-page");
   };
 
@@ -38,17 +52,18 @@ class NoteForm extends React.Component {
         <h1 className="form-header">Say Goodbye To All Of Your Problems</h1>
         <textarea
           placeholder="Vent it all away..."
-          value={this.state.text}
+          value={this.state.newNote.message}
           type="text"
-          name="text"
+          name="message"
           onChange={this.handleInput}
+          className={this.state.animate ? 'gone' : null}
         />
           <div className="select-box">
           <h3> Days To Store In Satellite: </h3>
           <select
-            name="storage"
+            name="delete_at"
             onChange={this.handleInput}
-            value={this.state.newNote.storage}
+            value={this.state.newNote.delete_at}
           >
             <option value="1">1</option>
             <option value="2">2</option>
@@ -62,7 +77,7 @@ class NoteForm extends React.Component {
           </select>
         </div>
         <div className="storage-btn">
-          <button> Blackhole </button>
+          <button onClick={this.handleAnimate}> Blackhole </button>
           <button onClick={this.addNote}> Store In Satellite</button>
           <button onClick={this.back}>Back</button>
         </div>
@@ -71,7 +86,14 @@ class NoteForm extends React.Component {
   }
 }
 
+
+const mapStateToProps = state => {
+  return {
+      notes: state.notes
+  }
+}
+
 export default connect(
-  null,
-  {}
+  mapStateToProps,
+  { addNote }
 )(NoteForm);

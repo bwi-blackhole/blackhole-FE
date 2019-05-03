@@ -1,26 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import TextField from "@material-ui/core/TextField";
-// import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-// import purple from "@material-ui/core/colors/purple";
+import { connect } from 'react-redux';
+import { getUsers, register } from '../actions';
 
-// const theme = createMuiTheme({
-//   palette: {
-//     primary: purple
-//   },
-//   typography: { useNextVariants: true }
-// });
 
-export default class SignUp extends React.Component {
+ class SignUp extends React.Component {
   state = {
     regcreds: {
-      regname: "",
-      regpassword: ""
-    }
+
+    },
+    username:'',
+    password: ''
   };
+
+
+
+  componentDidMount() {
+    this.props.getUsers();
+  }
 
   signUp = e => {
     e.preventDefault();
+    this.props.register(this.state.regcreds);
     this.props.history.push("/login");
   };
 
@@ -59,16 +60,16 @@ export default class SignUp extends React.Component {
           <form onSubmit={this.signUp}>
             <input
               onChange={this.handleInput}
-              value={this.state.regcreds.regname}
-              name="regname"
+              // value={this.state.regcreds.regname}
+              name="username"
               type="text"
               label="Name"
               placeholder="Username"
             />
             <input
               onChange={this.handleInput}
-              value={this.state.regcreds.regpassword}
-              name="regpassword"
+              // value={this.state.regcreds.regpassword}
+              name="password"
               type="password"
               label="Password"
               placeholder="Password"
@@ -85,4 +86,8 @@ export default class SignUp extends React.Component {
   }
 }
 
+
+export default connect(
+  null, { getUsers, register }
+)(SignUp);
 
