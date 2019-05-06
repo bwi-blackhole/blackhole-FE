@@ -38,7 +38,8 @@ import {
       case LOGIN_START:
         return {
           ...state,
-          loggingIn: true
+          loggingIn: true,
+          loggedIn: false  
         };
       case LOGIN_SUCCESS:
         return {
@@ -70,8 +71,7 @@ import {
           error: "",
           errorStatusCode: null,
           fetchingNotes: false,
-          notes: action.payload,
-          loggedIn: true 
+          notes: action.payload
         };
 
         case GET_USERS_START:
@@ -83,8 +83,7 @@ import {
           case GET_USERS_SUCCESS:
             return {
               ...state,
-              users: action.payload,
-              loggedIn: true   
+              users: action.payload 
             }
 
         case ADD_START:
