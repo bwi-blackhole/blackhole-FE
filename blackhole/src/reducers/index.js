@@ -61,7 +61,8 @@ import {
       case FETCH_DATA_START:
         return {
           ...state,
-          fetchingNotes: true
+          fetchingNotes: true,
+          loggedIn: true  
         };
       case FETCH_DATA_SUCCESS:
         return {
@@ -69,7 +70,8 @@ import {
           error: "",
           errorStatusCode: null,
           fetchingNotes: false,
-          notes: action.payload
+          notes: action.payload,
+          loggedIn: true 
         };
 
         case GET_USERS_START:
@@ -81,13 +83,15 @@ import {
           case GET_USERS_SUCCESS:
             return {
               ...state,
-              users: action.payload
+              users: action.payload,
+              loggedIn: true   
             }
 
         case ADD_START:
         return {
           ...state,
-          addingNotes: true
+          addingNotes: true,
+          loggedIn: true 
         };
     
         case ADD_SUCCESS:
@@ -95,13 +99,15 @@ import {
           ...state,
           addingNotes: false,
           error:'',
-          notes: [...action.payload.notes]
+          notes: [...action.payload.notes],
+          loggedIn: true   
         };
 
       case DELETE_START:
         return {
           ...state,
-          deletingNotes: true
+          deletingNotes: true,
+          loggedIn: true   
         };
       case DELETE_SUCCESS:
         return {
@@ -109,20 +115,23 @@ import {
           deletingNotes: false,
           error: "",
           errorStatusCode: null,
-          notes: [...action.payload]
+          notes: [...action.payload],
+          loggedIn: true   
         };
 
         case EDIT_START:
           return {
             ...state,
-            updatingNotes: true
+            updatingNotes: true,
+            loggedIn: true   
           }
 
           case EDIT_SUCCESS:
             return {
               ...state,
               updatingNotes: false,
-              notes: [...action.payload]
+              notes: [...action.payload],
+              loggedIn: true   
             }
 
       case USER_UNAUTHORIZED:
@@ -130,7 +139,8 @@ import {
           ...state,
           error: action.payload.data.error,
           errorStatusCode: action.payload.status,
-          fetchingNotes: false
+          fetchingNotes: false,
+          loggedIn: false   
         };
   
       default:
