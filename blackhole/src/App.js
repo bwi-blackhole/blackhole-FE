@@ -9,6 +9,7 @@ import Notes from "./components/Notes";
 import NoteForm from "./components/NoteForm";
 import { connect } from 'react-redux';
 
+// Test comment 
  class App extends React.Component {
   render() {
     return (
